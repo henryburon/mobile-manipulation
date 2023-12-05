@@ -242,11 +242,14 @@ def TrajectoryGenerator(T_se_i, T_sc_i, T_sc_f, scaling):
         reformatted_value = format_for_csv(config, 0)
         trajectory.append(reformatted_value)
 
-    np.savetxt("Buron_Henry_milestone2.csv", np.asarray(trajectory), delimiter = ",")
+    np.savetxt("/home/henry/Desktop/Classes/ME_449/CoppeliaSim_Edu_V4_5_1_rev4_Ubuntu22_04/milestone2.csv", np.asarray(trajectory), delimiter = ",")
 
     print("Generated and saved the end effector's trajectory!")
 
+    
     return trajectory
 
 
-test = TrajectoryGenerator(T_se_i, T_sc_i, T_sc_f, scaling=1)
+test = TrajectoryGenerator(T_se_i, T_sc_i, T_sc_f, scaling=2)
+print(test[9])
+print(len(test[9]))
