@@ -251,5 +251,3 @@ def TrajectoryGenerator(T_se_i, T_sc_i, T_sc_f, scaling):
 
 
 test = TrajectoryGenerator(T_se_i, T_sc_i, T_sc_f, scaling=2)
-print(test[9])
-print(len(test[9]))
