@@ -1,8 +1,9 @@
 import modern_robotics as mr
 import numpy as np
 
-# Milestone 3: Feedforward Control
-# Calculate the kinematic task space feedforward plus feedback control law
+########################################################################################
+# Milestone 3: Calculate the kinematic task-space feedforward plus feedback control law
+########################################################################################
 
 current_config = [0, 0, 0, 0, 0, 0.2, -1.6, 0]
 
@@ -20,7 +21,6 @@ Ki = np.zeros(6)
 dt = 0.01
 config = np.array([0, 0, 0, 0, 0, 0.2, -1.6, 0])
 X_err_int = None
-
 
 def FeedbackControl(X, Xd, Xd_next, Kp, Ki, dt, config):
     # Given dimensions of youBot chassis
@@ -56,8 +56,6 @@ def FeedbackControl(X, Xd, Xd_next, Kp, Ki, dt, config):
         ]
     )
 
-    #################################################################################
-
     thlist = config[3:8]
 
     # Calculate forward kinematics and velocity jacobian
@@ -81,7 +79,6 @@ def FeedbackControl(X, Xd, Xd_next, Kp, Ki, dt, config):
     Ve = np.hstack((V, controls, X_err))
 
     return V_d, V, X_err, controls, Ve, X_err_int
-
 
 # call FeedbackControl function
 V_d, V, X_err, controls, Ve, X_err_int = FeedbackControl(

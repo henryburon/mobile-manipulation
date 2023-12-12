@@ -6,6 +6,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 import logging
 
+############################################################################
+# Combines the 3 previous functions to generate a trajectory for the youBot
+############################################################################
 
 file = "overshoot_run.log"
 logging.basicConfig(filename=file, level=logging.DEBUG)
@@ -115,7 +118,6 @@ for i in range(5999):
     current_config = config[:12]
 
     # Create new config for next loop...
-
     config = NextState(current_config, final_controls, dt, max_speed)
 
     traj_new = traj[i][12]
@@ -124,10 +126,9 @@ for i in range(5999):
 
 logging.debug("Done generating configs.")
 
-# np.savetxt("/home/henry/Desktop/Classes/ME_449/CoppeliaSim_Edu_V4_5_1_rev4_Ubuntu22_04/milestone6.csv", np.asarray(final_path), delimiter = ",",)
-# np.savetxt("/home/henry/Desktop/milestone6.csv", np.asarray(final_path), delimiter = ",",)
-
-# np.savetxt("/home/henry/Desktop/XX.csv", np.asarray(X_err_list), delimiter = ",",)
+# np.savetxt("/CoppeliaSim_Edu_V4_5_1_rev4_Ubuntu22_04/plan_trajectory.csv", np.asarray(final_path), delimiter = ",",)
+# np.savetxt("/plan_trajectory.csv", np.asarray(final_path), delimiter = ",",)
+# np.savetxt("/X_plan_trajectory.csv", np.asarray(X_err_list), delimiter = ",",)
 
 logging.debug("Creating plot...")
 

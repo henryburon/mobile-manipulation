@@ -1,24 +1,14 @@
 import modern_robotics as mr
 import numpy as np
 
-# Milestone 1: youBot Kinematics Simulator and csv output
-
-################################################################################
-# NextState Function
-################################################################################
-
+############################################################
+# Milestone 1: Generate the next configuration of the robot
+############################################################
 
 def NextState(current_config, controls, dt, max_speed):
-    #############################################################################################
-    # INPUTS
-    # current_config: 12-vector (3 for chassis config, 5 for arm config, 4 for wheel angles)
-    # controls: 9-vector (4 for wheel speeds, 5 for arm joint speeds)
-    # dt: timestamp
-    # max_speed: max angular speed of the arm joints and wheels
-
-    # OUTPUT
-    # new_config: 12-vector (new_chassis_config, new_arm_config, new_wheel_angles)
-    #############################################################################################
+    """
+    Main function in the simulation. Finds the next configuration of the robot dt later.
+    """
 
     # Extract individual configs
     chassis_config = current_config[:3]
@@ -41,7 +31,7 @@ def NextState(current_config, controls, dt, max_speed):
     w = 0.15
     r = 0.0475
 
-    # Find chassis config, 13.4 odom...
+    # Find chassis config
     F = (r / 4) * np.array(
         [
             [-1 / (l + w), 1 / (l + w), 1 / (l + w), -1 / (l + w)],
@@ -99,7 +89,7 @@ for i in range(100):
 
 
 np.savetxt(
-    "/home/henry/Desktop/Classes/ME_449/CoppeliaSim_Edu_V4_5_1_rev4_Ubuntu22_04/milestone2.csv",
+    "/milestone2.csv",
     np.asarray(movement),
     delimiter=",",
 )
